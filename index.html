@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kit CCAR-F em português</title>
+<meta name="description" content="Tradução PT-BR do study kit do exame Claude Certified Architect: Foundations. Como pedir acesso, clonar e começar a estudar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF1F3; --paper-2:#E3EAEE; --graphite:#1B2026; --graphite-2:#4A555F;
+  --dropout:#A9C4D6; --stamp:#3B3A8C; --mark:#F2E57A; --rule:#C9D7E0;
+  --disp:"Chivo",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#141A1F; --paper-2:#1C242B; --graphite:#E6EDF2; --graphite-2:#9FB1BE;
+    --dropout:#3E5667; --stamp:#9E9CF0; --mark:#6E6630; --rule:#2B3740;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141A1F; --paper-2:#1C242B; --graphite:#E6EDF2; --graphite-2:#9FB1BE;
+  --dropout:#3E5667; --stamp:#9E9CF0; --mark:#6E6630; --rule:#2B3740;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--graphite);font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+/* marcas de registro, como numa folha de leitura óptica */
+.sheet{position:relative}
+.reg{position:absolute;width:13px;height:13px;border:2.5px solid var(--graphite);opacity:.75}
+.reg.tl{top:18px;left:18px;border-right:0;border-bottom:0}
+.reg.tr{top:18px;right:18px;border-left:0;border-bottom:0}
+header{padding:72px 0 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite-2);
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.eyebrow s{text-decoration:none;color:var(--dropout)}
+h1{font-family:var(--disp);font-weight:900;font-size:clamp(38px,8.2vw,76px);line-height:.94;letter-spacing:-.025em;
+  margin:18px 0 0;max-width:12ch}
+h1 span{display:block;color:var(--graphite-2)}
+.lede{font-size:clamp(18px,2.3vw,21px);max-width:54ch;margin:22px 0 0;color:var(--graphite)}
+.lede b{font-weight:600;box-shadow:inset 0 -.55em 0 var(--mark)}
+.spec{display:flex;flex-wrap:wrap;gap:0;margin:34px 0 0;border-top:1.5px solid var(--graphite);border-bottom:1.5px solid var(--graphite)}
+.spec div{flex:1 1 110px;padding:12px 14px 13px;border-right:1px solid var(--rule)}
+.spec div:last-child{border-right:0}
+.spec dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite-2)}
+.spec dd{margin:3px 0 0;font-family:var(--disp);font-weight:700;font-size:21px;letter-spacing:-.01em}
+/* assinatura: as 60 questões da prova, agrupadas por domínio */
+.strip{margin:46px 0 0;padding:26px 0 0;border-top:1px solid var(--rule)}
+.strip h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite-2);
+  font-weight:500;margin:0 0 18px}
+.grid{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.grp{flex:1 1 118px;min-width:102px}
+.bubs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
+.bub{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--dropout);display:block;
+  animation:fill .34s ease-out backwards;animation-delay:var(--d)}
+.grp[data-code="D1"] .bub{background:var(--graphite);border-color:var(--graphite)}
+.grp[data-code="D3"] .bub,.grp[data-code="D4"] .bub{background:var(--graphite-2);border-color:var(--graphite-2)}
+@keyframes fill{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+.glab{font-family:var(--mono);font-size:11px;line-height:1.5;border-top:1px solid var(--rule);padding-top:7px}
+.glab b{font-weight:500;letter-spacing:.06em} .glab span{float:right;color:var(--graphite-2)}
+.glab em{display:block;font-style:normal;color:var(--graphite-2);font-size:10.5px}
+/* passos */
+section{margin:58px 0 0}
+.kick{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite-2);margin:0 0 6px}
+h2.sec{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.4vw,33px);letter-spacing:-.02em;margin:0 0 14px}
+.step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--rule)}
+.step:last-of-type{border-bottom:1px solid var(--rule)}
+.snum{font-family:var(--mono);font-size:12px;color:var(--graphite-2);padding-top:5px;letter-spacing:.06em}
+.step h3{font-family:var(--disp);font-weight:700;font-size:19px;margin:0 0 7px;letter-spacing:-.01em}
+.step p{margin:0 0 10px} .step p:last-child{margin-bottom:0}
+ol.sub,ul.sub{margin:8px 0 0;padding-left:20px} ol.sub li,ul.sub li{margin:5px 0}
+code{font-family:var(--mono);font-size:.88em;background:var(--paper-2);padding:1.5px 5px;border-radius:3px}
+pre{font-family:var(--mono);font-size:13px;background:var(--paper-2);border-left:2.5px solid var(--dropout);
+  padding:13px 15px;overflow-x:auto;margin:11px 0;line-height:1.5}
+pre code{background:none;padding:0}
+a{color:var(--graphite);text-decoration-color:var(--dropout);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{text-decoration-color:var(--graphite)}
+a:focus-visible,.cta:focus-visible{outline:2.5px solid var(--stamp);outline-offset:3px}
+.cta{display:inline-block;font-family:var(--disp);font-weight:700;font-size:15px;background:var(--graphite);color:var(--paper);
+  padding:12px 20px;text-decoration:none;margin:4px 0 2px;border:1.5px solid var(--graphite)}
+.cta:hover{background:transparent;color:var(--graphite)}
+/* carimbo */
+.stamp{display:inline-block;transform:rotate(-3.5deg);border:2.5px solid var(--stamp);color:var(--stamp);
+  font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  padding:7px 13px;margin:0 0 16px;opacity:.9}
+table{width:100%;border-collapse:collapse;margin:14px 0 0;font-size:15px}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--graphite-2);
+  text-align:left;font-weight:500;padding:0 10px 8px 0;border-bottom:1.5px solid var(--graphite)}
+td{padding:11px 10px 11px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td.ord,td.dcode{font-family:var(--mono);font-size:13px;white-space:nowrap}
+td.ord{color:var(--stamp);font-weight:500} td.pct,td.qn{font-family:var(--mono);font-size:13px;color:var(--graphite-2);white-space:nowrap}
+.note{background:var(--paper-2);border-left:2.5px solid var(--dropout);padding:16px 18px;margin:20px 0 0;font-size:15.5px}
+.note p{margin:0} .note p+p{margin-top:9px}
+footer{margin:72px 0 0;padding:26px 0 56px;border-top:1.5px solid var(--graphite);font-size:14px;color:var(--graphite-2)}
+footer a{color:var(--graphite-2)}
+footer p{margin:0 0 9px;max-width:62ch}
+@media (max-width:560px){
+  header{padding-top:58px} .step{grid-template-columns:1fr;gap:4px} .snum{padding-top:0}
+  .spec div{flex:1 1 50%;border-bottom:1px solid var(--rule)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="sheet">
+<span class="reg tl"></span><span class="reg tr"></span>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCAR-F <s>/</s> tradução interna <s>/</s> HOUS3 × Myosin</p>
+  <h1>Kit de estudo<span>em português</span></h1>
+  <p class="lede">A prova é em inglês. O material de estudo não precisa ser.
+  Esta é a tradução PT-BR do study kit da Myosin: <b>explicação em português,
+  vocabulário de prova em inglês</b>.</p>
+
+  <dl class="spec">
+    <div><dt>Itens</dt><dd>60</dd></div>
+    <div><dt>Tempo</dt><dd>120 min</dd></div>
+    <div><dt>Aprovação</dt><dd>720<span style="font-size:14px;color:var(--graphite-2)">/1000</span></dd></div>
+    <div><dt>Validade</dt><dd>12 meses</dd></div>
+    <div><dt>Taxa</dt><dd>US$ 125</dd></div>
+  </dl>
+</header>
+
+<div class="strip">
+  <h2>Onde caem as 60 questões</h2>
+  <div class="grid">
+<div class="grp" data-code="D1">
+      <div class="bubs"><i class="bub" style="--d:14ms"></i><i class="bub" style="--d:28ms"></i><i class="bub" style="--d:42ms"></i><i class="bub" style="--d:56ms"></i><i class="bub" style="--d:70ms"></i><i class="bub" style="--d:84ms"></i><i class="bub" style="--d:98ms"></i><i class="bub" style="--d:112ms"></i><i class="bub" style="--d:126ms"></i><i class="bub" style="--d:140ms"></i><i class="bub" style="--d:154ms"></i><i class="bub" style="--d:168ms"></i><i class="bub" style="--d:182ms"></i><i class="bub" style="--d:196ms"></i><i class="bub" style="--d:210ms"></i><i class="bub" style="--d:224ms"></i></div>
+      <div class="glab"><b>D1</b><span>27%</span><em>16 questões</em></div>
+    </div>
+<div class="grp" data-code="D2">
+      <div class="bubs"><i class="bub" style="--d:238ms"></i><i class="bub" style="--d:252ms"></i><i class="bub" style="--d:266ms"></i><i class="bub" style="--d:280ms"></i><i class="bub" style="--d:294ms"></i><i class="bub" style="--d:308ms"></i><i class="bub" style="--d:322ms"></i><i class="bub" style="--d:336ms"></i><i class="bub" style="--d:350ms"></i><i class="bub" style="--d:364ms"></i><i class="bub" style="--d:378ms"></i></div>
+      <div class="glab"><b>D2</b><span>18%</span><em>11 questões</em></div>
+    </div>
+<div class="grp" data-code="D3">
+      <div class="bubs"><i class="bub" style="--d:392ms"></i><i class="bub" style="--d:406ms"></i><i class="bub" style="--d:420ms"></i><i class="bub" style="--d:434ms"></i><i class="bub" style="--d:448ms"></i><i class="bub" style="--d:462ms"></i><i class="bub" style="--d:476ms"></i><i class="bub" style="--d:490ms"></i><i class="bub" style="--d:504ms"></i><i class="bub" style="--d:518ms"></i><i class="bub" style="--d:532ms"></i><i class="bub" style="--d:546ms"></i></div>
+      <div class="glab"><b>D3</b><span>20%</span><em>12 questões</em></div>
+    </div>
+<div class="grp" data-code="D4">
+      <div class="bubs"><i class="bub" style="--d:560ms"></i><i class="bub" style="--d:574ms"></i><i class="bub" style="--d:588ms"></i><i class="bub" style="--d:602ms"></i><i class="bub" style="--d:616ms"></i><i class="bub" style="--d:630ms"></i><i class="bub" style="--d:644ms"></i><i class="bub" style="--d:658ms"></i><i class="bub" style="--d:672ms"></i><i class="bub" style="--d:686ms"></i><i class="bub" style="--d:700ms"></i><i class="bub" style="--d:714ms"></i></div>
+      <div class="glab"><b>D4</b><span>20%</span><em>12 questões</em></div>
+    </div>
+<div class="grp" data-code="D5">
+      <div class="bubs"><i class="bub" style="--d:728ms"></i><i class="bub" style="--d:742ms"></i><i class="bub" style="--d:756ms"></i><i class="bub" style="--d:770ms"></i><i class="bub" style="--d:784ms"></i><i class="bub" style="--d:798ms"></i><i class="bub" style="--d:812ms"></i><i class="bub" style="--d:826ms"></i><i class="bub" style="--d:840ms"></i></div>
+      <div class="glab"><b>D5</b><span>15%</span><em>9 questões</em></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <p class="kick">Para entrar</p>
+  <h2 class="sec">Três passos até estar estudando</h2>
+  <p class="stamp">Repositório privado</p>
+
+  <div class="step">
+    <div class="snum">01</div>
+    <div>
+      <h3>Peça acesso</h3>
+      <p>O repositório da tradução é privado. Abra uma issue aqui com o seu usuário
+      do GitHub e a Ana te adiciona como colaboradora ou colaborador.</p>
+      <p><a class="cta" href="https://github.com/PurpleRatatui/ccar-f-ptbr-site/issues/new?template=acesso.yml&amp;title=Acesso%20ao%20kit%20CCAR-F%20PT-BR">Pedir acesso</a></p>
+      <p style="font-size:14.5px;color:var(--graphite-2)">Você recebe o convite por e-mail. Aceite antes de seguir para o passo 2.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="snum">02</div>
+    <div>
+      <h3>Clone o repositório</h3>
+      <p>Abra o Terminal (no Mac: <code>Cmd+Espaço</code>, digite <code>Terminal</code>)
+      e cole as duas linhas abaixo, uma de cada vez:</p>
+      <pre><code>cd ~/Documents
+git clone https://github.com/PurpleRatatui/ccar-f-study-kit-ptbr.git</code></pre>
+      <p>Se ele pedir usuário e senha, use o seu login do GitHub. A pasta
+      <code>ccar-f-study-kit-ptbr</code> aparece dentro de Documentos.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="snum">03</div>
+    <div>
+      <h3>Abra no VS Code com o Claude Code</h3>
+      <ol class="sub">
+        <li>Instale o <a href="https://code.visualstudio.com/">VS Code</a>, se ainda não tiver.</li>
+        <li>No VS Code, aperte <code>Cmd+Shift+X</code>, busque <strong>Claude Code</strong> (publicado pela Anthropic) e instale.</li>
+        <li><strong>File → Open Folder…</strong> e escolha a pasta <code>ccar-f-study-kit-ptbr</code> inteira. Abrir a pasta toda é o que ativa o modo tutor.</li>
+        <li>Abra o painel do Claude e digite <code>/progress</code>. Se ele responder com seu progresso, está funcionando.</li>
+      </ol>
+      <p>Você não precisa saber programar. Nos exercícios, você explica seu
+      raciocínio em português e o Claude escreve o código. O que o exame mede é
+      a decisão de projeto, não a sintaxe.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="kick">Uma semana</p>
+  <h2 class="sec">Um domínio por dia, do mais pesado para o mais leve</h2>
+  <table>
+    <thead><tr><th>Ordem</th><th>Dom.</th><th>Domínio</th><th>Peso</th><th>Questões</th></tr></thead>
+    <tbody>
+<tr><td class="ord">1º</td><td class="dcode">D1</td><td>Agentic Architecture & Orchestration</td><td class="pct">27%</td><td class="qn">16</td></tr>
+<tr><td class="ord">2º</td><td class="dcode">D3</td><td>Claude Code Configuration & Workflows</td><td class="pct">20%</td><td class="qn">12</td></tr>
+<tr><td class="ord">3º</td><td class="dcode">D4</td><td>Prompt Engineering & Structured Output</td><td class="pct">20%</td><td class="qn">12</td></tr>
+<tr><td class="ord">4º</td><td class="dcode">D2</td><td>Tool Design & MCP Integration</td><td class="pct">18%</td><td class="qn">11</td></tr>
+<tr><td class="ord">5º</td><td class="dcode">D5</td><td>Context Management & Reliability</td><td class="pct">15%</td><td class="qn">9</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px">Todo dia segue o mesmo ciclo: ler o manual de campo
+  do domínio, fazer os exercícios, responder o quiz e voltar no que errou.
+  Dia 6 é o simulado completo com <code>/mock-exam</code>. Dia 7 é revisão.</p>
+  <div class="note">
+    <p><strong>Antes de cada quiz, leia o <code>ARMADILHAS.md</code>.</strong>
+    São as alternativas erradas que já pegaram alguém do time, com a regra que
+    desfaz cada confusão. Distrator de prova não é enfeite: é um erro de
+    produção real, escrito para soar razoável.</p>
+  </div>
+</section>
+
+<section>
+  <p class="kick">A premissa</p>
+  <h2 class="sec">Por que não traduzimos tudo</h2>
+  <p>A prova é aplicada em inglês, e os termos são o jogo inteiro:
+  <code>stop_reason</code>, <code>end_turn</code>, subagent, hook, MCP,
+  context window. Se você aprende em português, chega no dia da prova
+  traduzindo de cabeça contra o relógio.</p>
+  <p>Então: prosa, instruções e comentários em português. Termos técnicos,
+  código, caminhos de arquivo, comandos e task statements em inglês, exatamente
+  como aparecem na prova. A pasta <code>sources/</code> fica inteira em inglês
+  de propósito — é dela que o tutor cita literalmente o que o exame cobra.
+  As regras completas estão no <code>TRADUCAO.md</code>.</p>
+</section>
+
+<footer>
+  <p>Tradução não oficial do <a href="https://myosin-xyz.github.io/ccar-f-study-kit/">CCAR-F Study Kit</a>,
+  material criado pela Myosin. O kit original é público e gratuito; leia por lá se
+  preferir em inglês. Esta tradução é de uso interno e não deve ser redistribuída.</p>
+  <p>O exame CCAR-F é da Anthropic. Confirme formato, taxa e nota de corte na
+  página oficial de certificação antes de se inscrever — os números acima vêm do kit.</p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>

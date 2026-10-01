@@ -1,0 +1,31 @@
+name: Pedir acesso ao kit em português
+description: Peça acesso ao repositório privado com a tradução PT-BR do study kit CCAR-F.
+title: "Acesso ao kit CCAR-F PT-BR"
+labels: ["acesso"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        O repositório da tradução é privado. Preencha abaixo e você recebe o convite por e-mail.
+  - type: input
+    id: usuario
+    attributes:
+      label: Seu usuário do GitHub
+      description: O mesmo da conta em que você vai clonar o repositório.
+      placeholder: "@seu-usuario"
+    validations:
+      required: true
+  - type: input
+    id: time
+    attributes:
+      label: Time ou empresa
+      placeholder: "HOUS3 — produto"
+    validations:
+      required: true
+  - type: input
+    id: prova
+    attributes:
+      label: Data da prova, se já marcou
+      placeholder: "ainda não marquei"
+    validations:
+      required: false
